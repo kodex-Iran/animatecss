@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+<link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <title>Document</title>
+    <style>
+        .my-element {
+            display: inline-block;
+            margin: 0 0.5rem;
+
+            animation: bounce; /* referring directly to the animation's @keyframe declaration */
+            animation-duration: 2s; /* don't forget to set a duration! */
+            }
+    </style>
+    <style>
+        html,
+        body {
+          position: relative;
+          height: 100%;
+        }
+  
+        body {
+          background: #eee;
+          font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+          font-size: 14px;
+          color: #000;
+          margin: 0;
+          padding: 0;
+        }
+  
+        .swiper-container {
+          width: 100%;
+          height: 100%;
+        }
+  
+        .swiper-slide {
+          text-align: center;
+          font-size: 18px;
+          background: #fff;
+  
+          /* Center slide text vertically */
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          -webkit-align-items: center;
+          align-items: center;
+        }
+  
+        .swiper-slide img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+  
+        .swiper-container-v {
+          background: #eee;
+        }
+      </style>
+</head>
+<body>
+
+    <div class="swiper-container mySwiper swiper-container-h">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="swiper-container mySwiper2 swiper-container-v">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide"> <h1 class="my-element">An animated element</h1>
+                    </div>
+                    <div class="swiper-slide">Vertical Slide 2</div>
+                    <div class="swiper-slide">Vertical Slide 3</div>
+                    <div class="swiper-slide">Vertical Slide 4</div>
+                    <div class="swiper-slide">Vertical Slide 5</div>
+                  </div>
+                  <div class="swiper-pagination"></div>
+                </div>
+              </div>
+          <div class="swiper-slide"><h1 class="my-element">element</h1></div>
+         
+          <div class="swiper-slide">Horizontal Slide 3</div>
+          <div class="swiper-slide">Horizontal Slide 4</div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+<script src="assets/js/jquery-3.6.0.min.js"></script>
+<script src="assets/js/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper(".mySwiper", {
+      spaceBetween: 50,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      on: {
+    init: function () {
+        const element = $(".my-element");
+        if($(".my-element.animate__animated").length>0){
+            $(".my-element").removeClass('animate__animated');
+            $(".my-element").removeClass('animate__bounceOutLeft animate__delay-2s');
+            console.log('swiper');
+        }else{
+            console.log('ELSEswiper');
+            $(".my-element").addClass('animate__animated animate__bounceOutLeft animate__delay-2s');
+        }
+         console.log(element);
+    },
+  },
+    });
+    var swiper2 = new Swiper(".mySwiper2", {
+      direction: "vertical",
+      spaceBetween: 50,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      on: {
+    init: function () {
+        const element = $(".my-element");
+        if($(".my-element.animate__animated").length>0){
+            $(".my-element").removeClass('animate__animated');
+            $(".my-element").removeClass('animate__bounceOutLeft animate__delay-2s');
+            console.log('swiper2');
+        }else{
+            console.log('ELSEswiper2');
+            $(".my-element").addClass('animate__animated animate__bounceOutLeft animate__delay-2s');
+        }
+         console.log(element);
+            },
+        },
+    });
+    swiper.on('slideChange', function () {
+        const element = $(".my-element");
+        if($(".my-element.animate__animated").length>0){
+            console.log('that');
+            $(".my-element").removeClass('animate__animated');
+            $(".my-element").removeClass('animate__bounceOutLeft animate__delay-2s');
+            
+        }else{
+            console.log('ELSthat');
+            console.log($(".my-element.animate__animated").length);
+            $(".my-element").addClass('animate__animated animate__bounceOutLeft animate__delay-2s');
+        }
+         console.log(element);
+    });
+
+    swiper2.on('slideChange', function () {
+        const element = $(".my-element");
+        if($(".my-element.animate__animated").length>0){
+            console.log('this');
+            $(".my-element").removeClass('animate__animated');
+            $(".my-element").removeClass('animate__bounceOutLeft animate__delay-2s');
+            $(".my-element").addClass('animate__animated animate__bounceOutLeft animate__delay-2s');
+        }else{
+            console.log('ELsthis');
+            $(".my-element").addClass('animate__animated animate__bounceOutLeft animate__delay-2s');
+        }
+         console.log(element);
+    });
+  </script>
+  <script>
+
+  </script>
+</body>
+</html>
